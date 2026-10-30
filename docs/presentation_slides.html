@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DevPulse AI — Presentation Deck</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0B0F19;
+      color: #F8FAFC;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .deck-container {
+      width: 90vw;
+      max-width: 1100px;
+      height: 75vh;
+      background: #111827;
+      border: 1px solid #1F2937;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #1F2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #161F30;
+    }
+    .slide-badge {
+      background: #312E81;
+      color: #A5B4FC;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .slide-content {
+      flex: 1;
+      padding: 2.5rem 3rem;
+      overflow-y: auto;
+      display: none;
+    }
+    .slide-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 { font-size: 2.2rem; color: #F8FAFC; margin-bottom: 0.75rem; }
+    h2 { font-size: 1.75rem; color: #818CF8; margin-bottom: 1.25rem; }
+    h3 { font-size: 1.25rem; color: #38BDF8; margin-bottom: 0.5rem; }
+    p { font-size: 1.1rem; line-height: 1.6; color: #CBD5E1; margin-bottom: 1rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 1.25rem; }
+    li { font-size: 1.05rem; line-height: 1.7; color: #CBD5E1; margin-bottom: 0.5rem; }
+    .highlight { color: #34D399; font-weight: 600; }
+    .deck-nav {
+      padding: 1rem 2rem;
+      border-top: 1px solid #1F2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #161F30;
+    }
+    .nav-btn {
+      background: #4F46E5;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #4338CA; }
+    .nav-btn:disabled { background: #374151; color: #9CA3AF; cursor: not-allowed; }
+    .slide-counter { font-size: 0.95rem; color: #94A3B8; font-weight: 500; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .card { background: #1E293B; border: 1px solid #334155; padding: 1.25rem; border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #334155; padding: 10px; text-align: left; font-size: 0.95rem; }
+    th { background: #1E293B; color: #818CF8; }
+    code { background: #0F172A; color: #F43F5E; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+<div class="deck-container">
+  <div class="slide-header">
+    <div style="font-weight: bold; font-size: 1.1rem; color: #E2E8F0;">DevPulse AI — Presentation Deck</div>
+    <div class="slide-badge">GMRIT Track 06</div>
+  </div>
+
+  <!-- SLIDE 1 -->
+  <div class="slide-content active" id="slide-1">
+    <span class="slide-badge">Slide 1 of 8</span>
+    <h1 style="margin-top: 1rem;">DevPulse AI — Code Explainer & Debugging Tutor</h1>
+    <h3 style="color: #A5B4FC;">Grand AI & NLP Projects | Practical Implementation</h3>
+    <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #94A3B8;">
+      An intelligent pedagogical code explanation and debugging assistant that guides programming students through progressive Socratic hints, pinpoint root-cause analysis, and visual unified diffs.
+    </p>
+    <div class="grid-2" style="margin-top: 2rem;">
+      <div class="card">
+        <h3>🎯 Core Purpose</h3>
+        <p>Transforming cryptic compiler stack traces into constructive, conceptual learning moments.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Target Users</h3>
+        <p>First/second-year programming students, CS undergraduates, and self-taught developers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide-content" id="slide-2">
+    <span class="slide-badge">Slide 2 of 8</span>
+    <h2 style="margin-top: 1rem;">The Problem & User Scenarios</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color: #F87171;">⚠️ The Educational Challenge</h3>
+        <ul>
+          <li><strong>Cryptic Compiler Errors:</strong> Beginners copy errors without understanding the root cause.</li>
+          <li><strong>Passive Copy-Pasting:</strong> Generic AI chatbots supply full solutions directly, stopping students from learning.</li>
+          <li><strong>Fragile Knowledge:</strong> High recurrence rate of fundamental off-by-one and null pointer errors.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color: #34D399;">💡 3 Key User Scenarios</h3>
+        <ul>
+          <li><strong>Scenario A (Syntax & Runtime):</strong> A student gets an <code>IndexError</code> and needs to see why <code>range(len + 1)</code> exceeds bounds.</li>
+          <li><strong>Scenario B (Socratic Tutoring):</strong> A learner uses Hint-First mode to deduce a missing recursive base condition.</li>
+          <li><strong>Scenario C (Defensive Testing):</strong> A student generates boundary test cases to stress-test their implementation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide-content" id="slide-3">
+    <span class="slide-badge">Slide 3 of 8</span>
+    <h2 style="margin-top: 1rem;">Core Solution & Key Features</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Plain-English Summary</h3>
+        <p>Summarizes the student's code intent in clear, accessible language before discussing errors.</p>
+        <h3>2. Theoretical Root Cause</h3>
+        <p>Pinpoints the computational mechanism behind the failure (e.g. 0-indexing, stack overflow).</p>
+        <h3>3. Minimal Fix Philosophy</h3>
+        <p>Prescribes the smallest surgical modification rather than rewriting the user's entire logic.</p>
+      </div>
+      <div class="card">
+        <h3>4. Progressive Socratic Hints</h3>
+        <p>3-tiered reveal (Observation → Clue → Guidance) preventing answer-spoiling.</p>
+        <h3>5. Visual Unified Diff</h3>
+        <p>High-contrast additions and removals with line-by-line reasoning.</p>
+        <h3>6. Edge Case & Complexity Analysis</h3>
+        <p>Synthesizes boundary unit tests and compares Big-O time and space complexity.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide-content" id="slide-4">
+    <span class="slide-badge">Slide 4 of 8</span>
+    <h2 style="margin-top: 1rem;">System Architecture & Data Flow</h2>
+    <p>DevPulse AI adheres strictly to the decoupled architecture required by Section 4 of the GMRIT Handbook:</p>
+    <div class="card" style="font-family: monospace; font-size: 0.95rem; line-height: 1.5; background: #0F172A; margin-top: 1rem;">
+      [ User Browser ]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;│ HTTP / WebSocket<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+      [ Streamlit Frontend: app.py, pages/ ] (Input widgets, state, zero model prompts)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;│ Validation gate<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+      [ backend.utils.validators ] (3-15k char limits, language whitelist, sanitization)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;│ Validated dictionary<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+      [ backend.core.pipeline ] (Structured JSON schemas, difflib diff generation)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;│ Dual Engine Dispatch<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;├──► [ Local Static AST Engine ] (100% Offline, &lt;40ms, zero-key reliability)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;└──► [ Neural LLM Service ] (Google Gemini 1.5/2.0 Flash / Groq LLaMA 3.3)
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide-content" id="slide-5">
+    <span class="slide-badge">Slide 5 of 8</span>
+    <h2 style="margin-top: 1rem;">Live Demonstration & User Flow</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Demo Walkthrough 1: Main Analyzer</h3>
+        <ul>
+          <li><strong>Step 1:</strong> Select pre-configured sample bug from sidebar preset.</li>
+          <li><strong>Step 2:</strong> Code and traceback populate in dual editors.</li>
+          <li><strong>Step 3:</strong> Click <em>Analyze & Debug Code</em>.</li>
+          <li><strong>Step 4:</strong> Review 6 tabbed panels: Explanation, Root Cause, Diff, Hints, Tests, Complexity.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Demo Walkthrough 2: Specialized Pages</h3>
+        <ul>
+          <li><strong>Socratic Tutor (<code>1_Interactive_Tutor.py</code>):</strong> Interactive student hypothesis testing and progressive guidance.</li>
+          <li><strong>Test Lab (<code>2_Test_Lab.py</code>):</strong> Real-time automated execution of all 8 GMRIT acceptance criteria.</li>
+          <li><strong>Markdown Audit Report:</strong> Download comprehensive diagnostic report for homework or code review.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide-content" id="slide-6">
+    <span class="slide-badge">Slide 6 of 8</span>
+    <h2 style="margin-top: 1rem;">Testing & Quality Assurance</h2>
+    <p>Tested against rigorous unit, integration, and security guardrail suites:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Test Category</th>
+          <th>Test Cases</th>
+          <th>Expected Behavior</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Runtime Errors</td>
+          <td>TC-01, TC-02, TC-05</td>
+          <td>Identifies index bounds, missing base cases, undefined properties</td>
+          <td><span class="highlight">PASS</span></td>
+        </tr>
+        <tr>
+          <td>Input Validation</td>
+          <td>TC-03, TC-04, TC-07</td>
+          <td>Rejects empty, unsupported, and oversized payloads safely</td>
+          <td><span class="highlight">PASS</span></td>
+        </tr>
+        <tr>
+          <td>Logic Analysis</td>
+          <td>TC-06, TC-08</td>
+          <td>Detects inverted conditions without errors; validates clean code</td>
+          <td><span class="highlight">PASS</span></td>
+        </tr>
+        <tr>
+          <td>Unit Test Suite</td>
+          <td>15 Unit Tests</td>
+          <td>Full coverage across validators, pipeline, and fallback engine</td>
+          <td><span class="highlight">15/15 PASS</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide-content" id="slide-7">
+    <span class="slide-badge">Slide 7 of 8</span>
+    <h2 style="margin-top: 1rem;">Technical Decisions & Tradeoffs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Design Choice</th>
+          <th>Alternative Considered</th>
+          <th>Engineering Justification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Streamlit Community Cloud Deployment</strong></td>
+          <td>Separate FastAPI + React Server</td>
+          <td>Single repository deployable with 1-click; avoids managing dual servers.</td>
+        </tr>
+        <tr>
+          <td><strong>Dual Engine (AST + Neural)</strong></td>
+          <td>Online-only API calls</td>
+          <td>Guarantees zero viva/demo failure if internet drops or API quota is hit.</td>
+        </tr>
+        <tr>
+          <td><strong>No Remote Execution</strong></td>
+          <td>Server-side sandbox execution</td>
+          <td>Prevents server compromise; safe for multi-tenant educational hosting.</td>
+        </tr>
+        <tr>
+          <td><strong>Decoupled REST Calls</strong></td>
+          <td>Heavy third-party SDKs</td>
+          <td>Avoids dependency deprecation and pin conflicts during grading.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide-content" id="slide-8">
+    <span class="slide-badge">Slide 8 of 8</span>
+    <h2 style="margin-top: 1rem;">Limitations & Future Roadmap</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color: #F87171;">⚠️ Known Limitations</h3>
+        <ul>
+          <li><strong>Static Analysis Boundary:</strong> Cannot simulate live network I/O or multi-threaded timing races.</li>
+          <li><strong>Single-File Scope:</strong> Complex multi-module projects require snippet-by-snippet input.</li>
+          <li><strong>API Rate Limits:</strong> Free-tier LLMs throttle on burst traffic (handled by offline engine).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color: #34D399;">🚀 Future Roadmap</h3>
+        <ul>
+          <li><strong>Client-Side WebAssembly:</strong> Integrate Pyodide for safe browser-only code execution.</li>
+          <li><strong>AST Semantic Linting:</strong> Pre-compile abstract syntax trees for C++, Java, and Go.</li>
+          <li><strong>Instructor Dashboard:</strong> Aggregate common student misunderstandings across a class.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <p style="color: #818CF8; font-weight: bold; font-size: 1.15rem;">Thank you! Questions and Code Review are welcomed.</p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="deck-nav">
+    <button class="nav-btn" id="prev-btn" onclick="prevSlide()" disabled>← Previous</button>
+    <div class="slide-counter" id="slide-num">Slide 1 of 8</div>
+    <button class="nav-btn" id="next-btn" onclick="nextSlide()">Next →</button>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 8;
+
+  function showSlide(n) {
+    for (let i = 1; i <= totalSlides; i++) {
+      document.getElementById('slide-' + i).classList.remove('active');
+    }
+    document.getElementById('slide-' + n).classList.add('active');
+    document.getElementById('slide-num').innerText = 'Slide ' + n + ' of ' + totalSlides;
+    document.getElementById('prev-btn').disabled = (n === 1);
+    document.getElementById('next-btn').disabled = (n === totalSlides);
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 1) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'Space') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  });
+</script>
+
+</body>
+</html>

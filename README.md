@@ -119,8 +119,18 @@ devpulse-ai/
 ├── tests/
 │   ├── __init__.py
 │   ├── test_validators.py      # Unit tests for input validation
-│   └── test_pipeline.py        # Pipeline & mock tests (12 automated checks)
-├── assets/                     # Diagrams and screenshots
+│   └── test_pipeline.py        # Pipeline & mock tests (15 automated checks)
+├── docs/                       # Comprehensive evaluation documentation
+│   ├── DevPulse_AI_Presentation.pptx # OpenXML PPTX presentation deck
+│   ├── presentation_slides.html     # Interactive slide deck (browser-ready)
+│   ├── PRESENTATION_SLIDES.md       # Slide deck script and talking points
+│   ├── PROJECT_REPORT.md            # Comprehensive 7-section academic project report
+│   └── TEST_REPORT.md               # 8 GMRIT acceptance criteria test cases
+├── assets/                     # Screenshots and architecture diagrams
+│   ├── architecture_diagram.png
+│   ├── screenshot_home.png
+│   ├── screenshot_analysis.png
+│   └── screenshot_edge_case.png
 ├── .streamlit/
 │   ├── config.toml             # Theme settings (Deep Indigo/Dark modern)
 │   └── secrets.toml.example    # Local secrets template
@@ -253,12 +263,29 @@ pytest -v tests/
 ---
 
 ## 13. Screenshots / Demo
-*(Store actual evaluation screenshots inside the `assets/` directory)*
 
-1. **Home & Code Input Screen**: Clean dual-panel editor with language selector and sample bug dropdown.
-2. **Successful Diagnostic Report**: Tabbed layout showing Plain English Explanation, Root Cause, Corrected Code, and Unified Diff.
-3. **Socratic Tutor & Edge Cases**: Progressive hint reveal cards and boundary test cases.
-4. **Validation Guardrail**: Graceful warning when empty or oversized inputs are submitted.
+### 1. Home & Code Input Screen
+Dual-pane editor with language selector, Evaluator sample presets, and dual intelligence engine switch:
+![Home Screen](assets/screenshot_home.png)
+
+### 2. Diagnostic Analysis & Unified Diff
+Tabbed diagnosis showing plain English explanation, theoretical root cause, corrected code, line-by-line breakdown, and high-contrast unified diff:
+![Diagnostic Analysis](assets/screenshot_analysis.png)
+
+### 3. Edge Cases & Validation Guardrails
+Generated boundary conditions, algorithmic complexity comparison, and DoS input boundary safeguards:
+![Edge Cases and Guardrails](assets/screenshot_edge_case.png)
+
+### 4. System Architecture
+Decoupled modular architecture adhering to Section 4 of the GMRIT handbook:
+![Architecture Diagram](assets/architecture_diagram.png)
+
+### Presentation & Evaluation Deliverables:
+- **Interactive Presentation Deck (Browser-Ready):** [`docs/presentation_slides.html`](docs/presentation_slides.html)
+- **PowerPoint Presentation:** [`docs/DevPulse_AI_Presentation.pptx`](docs/DevPulse_AI_Presentation.pptx)
+- **Slide Script & Markdown Deck:** [`docs/PRESENTATION_SLIDES.md`](docs/PRESENTATION_SLIDES.md)
+- **Comprehensive Project Report:** [`docs/PROJECT_REPORT.md`](docs/PROJECT_REPORT.md)
+- **Official Acceptance Test Report (8/8 Cases):** [`docs/TEST_REPORT.md`](docs/TEST_REPORT.md)
 
 ---
 
