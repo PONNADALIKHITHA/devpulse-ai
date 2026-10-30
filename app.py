@@ -89,17 +89,37 @@ with st.sidebar:
     )
     st.session_state["engine_mode"] = engine_choice
 
-    with st.expander("🔑 Optional API Key (Gemini / Groq)", expanded=False):
-        prov_select = st.selectbox("Provider", ["gemini", "groq"])
+    with st.expander("🔑 Optional API Key (Gemini / Groq)", expanded=True):
+        current_prov = os.getenv("LLM_PROVIDER", "groq").lower()
+        prov_idx = 1 if current_prov == "gemini" else 0
+        prov_select = st.selectbox("Provider", ["groq", "gemini"], index=prov_idx)
+        
+        if prov_select == "groq":
+            model_options = [
+                "llama-3.1-8b-instant",
+                "llama-3.1-70b-versatile",
+                "llama-3.3-70b-versatile",
+                "mixtral-8x7b-32768",
+                "gemma2-9b-it"
+            ]
+        else:
+            model_options = [
+                "gemini-1.5-flash",
+                "gemini-1.5-pro",
+                "gemini-2.0-flash-exp"
+            ]
+            
+        selected_model = st.selectbox("Model", model_options, index=0)
         api_key_val = st.text_input("API Key", type="password", value=st.session_state["custom_api_key"])
         if api_key_val:
             st.session_state["custom_api_key"] = api_key_val
             os.environ["GEMINI_API_KEY" if prov_select == "gemini" else "GROQ_API_KEY"] = api_key_val
             os.environ["LLM_PROVIDER"] = prov_select
+            os.environ["MODEL_NAME"] = selected_model
         
         if st.button("⚡ Test API Connection"):
-            with st.spinner("Pinging API..."):
-                ok, msg = test_api_connection(prov_select, api_key_val)
+            with st.spinner(f"Testing {prov_select.upper()} ({selected_model})..."):
+                ok, msg = test_api_connection(prov_select, api_key_val, selected_model)
                 if ok:
                     st.success(msg)
                 else:

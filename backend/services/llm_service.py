@@ -65,7 +65,7 @@ def call_gemini(prompt: str, system_prompt: str, api_key: str, model: str) -> st
 
 def call_groq(prompt: str, system_prompt: str, api_key: str, model: str) -> str:
     """Call Groq API using OpenAI-compatible chat completions endpoint."""
-    model_id = model if model and "llama" in model else "llama-3.3-70b-versatile"
+    model_id = model.strip() if model and model.strip() else "llama-3.1-8b-instant"
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
@@ -89,6 +89,14 @@ def call_groq(prompt: str, system_prompt: str, api_key: str, model: str) -> str:
     if response.status_code == 200:
         data = response.json()
         return data["choices"][0]["message"]["content"]
+    elif response.status_code == 404 and model_id != "llama-3.1-8b-instant":
+        # Fallback to universally supported llama-3.1-8b-instant if specific model not found
+        logger.warning(f"Model '{model_id}' not found on Groq. Retrying with 'llama-3.1-8b-instant'...")
+        payload["model"] = "llama-3.1-8b-instant"
+        retry_resp = requests.post(url, headers=headers, json=payload, timeout=REQUEST_TIMEOUT)
+        if retry_resp.status_code == 200:
+            return retry_resp.json()["choices"][0]["message"]["content"]
+        raise RuntimeError(f"Groq API error ({retry_resp.status_code}): {retry_resp.text}")
     elif response.status_code == 429:
         raise RuntimeError("Groq API rate limit reached. Please try again shortly or use Local Engine.")
     elif response.status_code in (401, 403):
@@ -116,7 +124,7 @@ def test_api_connection(provider: str, api_key: str, model: Optional[str] = None
             elapsed = time.time() - start_time
             return True, f"Connected to Google Gemini ({mod}) in {elapsed:.2f}s."
         elif prov == "groq":
-            mod = model or "llama-3.3-70b-versatile"
+            mod = model or "llama-3.1-8b-instant"
             resp = call_groq(
                 prompt='Respond with JSON: {"status": "ok"}',
                 system_prompt="Return strict JSON only.",

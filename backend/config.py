@@ -74,7 +74,7 @@ def get_model_name() -> str:
         return custom_model
 
     if provider == "groq":
-        return "llama-3.3-70b-versatile"
+        return "llama-3.1-8b-instant"
     elif provider == "gemini":
         return "gemini-1.5-flash"
     return "devpulse-mock-engine"
